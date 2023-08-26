@@ -1,4 +1,4 @@
-package com.tarasov.testrickmasters.domain.entities
+package com.tarasov.testrickmasters.domain.camera
 
 data class CameraEntity(
     val name: String,
