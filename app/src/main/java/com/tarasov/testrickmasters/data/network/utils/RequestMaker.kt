@@ -2,8 +2,9 @@ package com.tarasov.testrickmasters.data.network.utils
 
 import retrofit2.Response
 import java.io.IOException
+import javax.inject.Inject
 
-class RequestMaker(
+class RequestMaker @Inject constructor(
     private val responseCodeMapper: ResponseCodeMapper
     ) {
 

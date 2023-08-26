@@ -1,7 +1,9 @@
 package com.tarasov.testrickmasters.data.network.utils
 
+import javax.inject.Inject
 
-open class ResponseCodeMapper() {
+
+open class ResponseCodeMapper @Inject constructor() {
 
     var customCodeMapper: ResponseCodeMapper? = null
 

@@ -9,6 +9,17 @@ data class CameraDTO(
     val rec: Boolean
 )
 
+data class ListCameraDTO(
+    val success: Boolean,
+  //  val data: List<E>
+    //val data: Pair<Room, ListCameras>>
+   // val data: Pair<List<String>, List<CameraDTO>>
+)
+
+
+
+//val cameras: List<CameraDTO>,
+// val rooms: List<String>,
 
 /*
         "name": "Camera 1",
