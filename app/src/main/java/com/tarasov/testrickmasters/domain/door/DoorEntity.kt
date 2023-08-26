@@ -1,4 +1,4 @@
-package com.tarasov.testrickmasters.domain.entities
+package com.tarasov.testrickmasters.domain.door
 
 data class DoorEntity(
     val name: String,

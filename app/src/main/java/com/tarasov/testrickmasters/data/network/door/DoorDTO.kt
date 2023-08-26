@@ -1,4 +1,4 @@
-package com.tarasov.testrickmasters.data.network.dto
+package com.tarasov.testrickmasters.data.network.door
 
 data class DoorDTO(
     val name: String,

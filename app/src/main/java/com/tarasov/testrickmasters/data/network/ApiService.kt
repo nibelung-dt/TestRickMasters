@@ -1,7 +1,7 @@
 package com.tarasov.testrickmasters.data.network
 
-import com.tarasov.testrickmasters.data.network.dto.CameraDTO
-import com.tarasov.testrickmasters.data.network.dto.DoorDTO
+import com.tarasov.testrickmasters.data.network.camera.CameraDTO
+import com.tarasov.testrickmasters.data.network.door.DoorDTO
 import retrofit2.Response
 import retrofit2.http.GET
 

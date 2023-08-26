@@ -1,10 +1,9 @@
-package com.tarasov.testrickmasters.data.network.mappers
+package com.tarasov.testrickmasters.data.network.camera
 
-import com.tarasov.testrickmasters.data.network.dto.CameraDTO
-import com.tarasov.testrickmasters.domain.entities.CameraEntity
+import com.tarasov.testrickmasters.domain.camera.CameraEntity
 
-class MapperCameraDTO(val cameraDTO: CameraDTO) {
-    fun map(): CameraEntity {
+class MapperCameraDTO() {
+    fun map(cameraDTO: CameraDTO): CameraEntity {
         return CameraEntity(
             name = cameraDTO.name,
             snapshot = cameraDTO.snapshot,
