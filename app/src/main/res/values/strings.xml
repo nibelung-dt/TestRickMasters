@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestRickMasters</string>
+
+    <!--  Error  -->
+    <string name="response_code_undefined">Что-то пошло не так</string>
+    <string name="response_code_internet_denied">Нет подключения к интернету</string>
+    <string name="response_code_bad_request">Неправильный запрос</string>
+    <string name="response_code_not_found">Не найдено</string>
 </resources>

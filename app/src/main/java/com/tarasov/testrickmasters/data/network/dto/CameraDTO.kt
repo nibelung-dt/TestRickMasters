@@ -1,4 +1,4 @@
-package com.tarasov.testrickmasters.data.network.DTO
+package com.tarasov.testrickmasters.data.network.dto
 
 data class CameraDTO(
     val name: String,

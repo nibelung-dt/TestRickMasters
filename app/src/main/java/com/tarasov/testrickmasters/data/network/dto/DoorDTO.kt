@@ -1,9 +1,9 @@
-package com.tarasov.testrickmasters.data.network.DTO
+package com.tarasov.testrickmasters.data.network.dto
 
 data class DoorDTO(
     val name: String,
     val snapshot: String = "unknown", // сервер может не прислать этот параметр
-    val room: String,
+    val room: String?,
     val id: Int,
     val favorites: Boolean,
 )
