@@ -20,6 +20,7 @@ import com.tarasov.testrickmasters.domain.door.DoorEntity
 import com.tarasov.testrickmasters.presentation.utils.SimpleState
 import com.tarasov.testrickmasters.ui.theme.TestRickMastersTheme
 import dagger.hilt.android.AndroidEntryPoint
+import io.realm.gradle.Realm
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -41,11 +42,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-
         viewModel.getCamerasRemote()
         viewModel.getRoomsRemote()
         camerasObserver()
         doorsObserver()
+
+
     }
 
     private fun camerasObserver() {
