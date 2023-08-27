@@ -18,12 +18,23 @@ class App: Application() {
         super.onCreate()
         Realm.init(this)
 
-        val realmName = "My Project"
-        val config = RealmConfiguration.Builder()
-            .name(realmName)
-            .build()
-        val uiThreadRealm = Realm.getInstance(config)
+//        val realmName = "My Project"
+//        val config = RealmConfiguration.Builder()
+//            .name(realmName)
+//            .build()
+//        val uiThreadRealm = Realm.getInstance(config)
         //addChangeListenerToRealm(uiThreadRealm)
 
+        val configuration = RealmConfiguration.Builder()
+            .name("todo.db")
+            .deleteRealmIfMigrationNeeded()
+            .allowWritesOnUiThread(true)
+            .allowQueriesOnUiThread(true)
+            .schemaVersion(0)
+            .build()
+        Realm.setDefaultConfiguration(configuration)
+
+//            .allowWritesOnUiThread(true)
+//            .allowQueriesOnUiThread(true)
     }
 }

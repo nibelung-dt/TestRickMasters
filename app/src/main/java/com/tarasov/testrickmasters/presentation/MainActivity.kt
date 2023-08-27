@@ -15,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import com.tarasov.testrickmasters.data.database.DatabaseOperations
+import com.tarasov.testrickmasters.data.database.TestObject
 import com.tarasov.testrickmasters.domain.camera.CameraEntity
 import com.tarasov.testrickmasters.domain.door.DoorEntity
 import com.tarasov.testrickmasters.presentation.utils.SimpleState
@@ -27,7 +29,6 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +48,22 @@ class MainActivity : ComponentActivity() {
         camerasObserver()
         doorsObserver()
 
+        // проверка realm
+        viewModel.addTestObject( "Ivan")
 
+       // val db = DatabaseOperations(uiThreadRealm)
+       // uiThreadRealm
     }
+
+    private fun testObserver() {
+        val nameObserver = Observer<List<TestObject>> { state ->
+            Log.d("MY_LOG", "извлечение из БД")
+            Log.d("MY_LOG", state[0].name)
+        }
+        viewModel.allNotes.observe(this, nameObserver)
+    }
+
+
 
     private fun camerasObserver() {
         val nameObserver = Observer<SimpleState<List<CameraEntity>>> { state ->

@@ -26,6 +26,13 @@ open class Camera(
     var snapshot: String = "",
 ): RealmObject()
 
+open class TestObject: RealmObject() {
+    @PrimaryKey
+    var id: String = ""
+    @Required
+    var name: String = ""
+}
+
 /*
 @DrawableRes
     var image: Int? = null // 5.
