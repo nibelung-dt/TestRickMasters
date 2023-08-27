@@ -12,10 +12,16 @@ class DoorRepositoryImpl @Inject constructor (
     private val requestMaker: RequestMaker,
     private val requestMapper: MapperDoorDTO
 ): DoorRepository {
+
+    suspend fun test() {
+        service.getDoors()
+    }
+
     override suspend fun getDoorRemote(): NetworkResponse<List<DoorEntity>> {
+        test()
         return requestMaker.getResponse(
             funToExecute = { service.getDoors() },
-            mapResponse = { list -> list.map(requestMapper::map) }
+            mapResponse = { list -> list.data.map(requestMapper::map) }
         )
     }
 }

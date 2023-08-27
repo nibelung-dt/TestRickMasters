@@ -16,6 +16,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.tarasov.testrickmasters.domain.camera.CameraEntity
+import com.tarasov.testrickmasters.domain.door.DoorEntity
 import com.tarasov.testrickmasters.presentation.utils.SimpleState
 import com.tarasov.testrickmasters.ui.theme.TestRickMastersTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,10 +41,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        Log.d("MY_LOG", "onCreate()")
+
         viewModel.getCamerasRemote()
-      //  viewModel.getRoomsRemote()
+        viewModel.getRoomsRemote()
         camerasObserver()
+        doorsObserver()
     }
 
     private fun camerasObserver() {
@@ -53,17 +55,39 @@ class MainActivity : ComponentActivity() {
                     val x = state.data
                     //creditProductsRvAdapter.submitList(state.data)
                 }
+
                 is SimpleState.Error -> {
                     Log.d("MY_LOG", "ошибка")
-                    }
+                }
+
                 is SimpleState.Loading -> {
                     Log.d("MY_LOG", "загрузка")
-//                    showProgressBar(true)
                 }
             }
         }
-        viewModel.viewState.observe(this, nameObserver)
+        viewModel.viewStateCameras.observe(this, nameObserver)
+    }
+
+    private fun doorsObserver() {
+        val nameObserver = Observer<SimpleState<List<DoorEntity>>> { state ->
+            when (state) {
+                is SimpleState.Success -> {
+                    val x = state.data
+                    Log.d("MY_LOG", x[0].name)
+                    //creditProductsRvAdapter.submitList(state.data)
+                }
+
+                is SimpleState.Error -> {
+                    Log.d("MY_LOG", "ошибка roomsObserver()")
+                }
+
+                is SimpleState.Loading -> {
+                    Log.d("MY_LOG", "загрузка")
+                }
+            }
         }
+        viewModel.viewStateDoors.observe(this, nameObserver)
+    }
 }
 
 @Composable

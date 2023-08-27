@@ -2,7 +2,7 @@ package com.tarasov.testrickmasters.data.network.door
 
 data class DoorDTO(
     val name: String,
-    val snapshot: String = "unknown", // сервер может не прислать этот параметр
+    val snapshot: String?, // = "unknown", // сервер может не прислать этот параметр
     val room: String?,
     val id: Int,
     val favorites: Boolean,
