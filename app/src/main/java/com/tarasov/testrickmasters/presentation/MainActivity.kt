@@ -40,8 +40,9 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        Log.d("MY_LOG", "onCreate()")
         viewModel.getCamerasRemote()
-        viewModel.getRoomsRemote()
+      //  viewModel.getRoomsRemote()
         camerasObserver()
     }
 
@@ -50,13 +51,13 @@ class MainActivity : ComponentActivity() {
             when (state) {
                 is SimpleState.Success -> {
                     val x = state.data
-                    Log.d("MY_LOG", x[0].name)
                     //creditProductsRvAdapter.submitList(state.data)
                 }
                 is SimpleState.Error -> {
                     Log.d("MY_LOG", "ошибка")
                     }
                 is SimpleState.Loading -> {
+                    Log.d("MY_LOG", "загрузка")
 //                    showProgressBar(true)
                 }
             }

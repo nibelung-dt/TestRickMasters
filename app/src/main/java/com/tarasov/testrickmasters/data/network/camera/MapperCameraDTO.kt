@@ -9,7 +9,7 @@ class MapperCameraDTO @Inject constructor() {
         return CameraEntity(
             name = cameraDTO.name,
             snapshot = cameraDTO.snapshot,
-            room = cameraDTO.room,
+            room = cameraDTO.room ?: "null",
             id = cameraDTO.id,
             favorites = cameraDTO.favorites,
             rec = cameraDTO.rec
