@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.tarasov.testrickmasters.data.network.camera.CameraRepositoryImpl
 import com.tarasov.testrickmasters.data.network.door.DoorRepositoryImpl
 import com.tarasov.testrickmasters.data.network.utils.NetworkResponse
+import com.tarasov.testrickmasters.di.IoDispatcher
 import com.tarasov.testrickmasters.domain.camera.CameraEntity
 import com.tarasov.testrickmasters.domain.door.DoorEntity
 import com.tarasov.testrickmasters.presentation.utils.SimpleState
@@ -21,7 +22,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val repositoryCameras: CameraRepositoryImpl,
     private val repositoryDoor: DoorRepositoryImpl,
-   // private val dispatcherIO: CoroutineDispatcher  // нужно создать аннотацию для Хилта
+    @IoDispatcher private val dispatcherIO: CoroutineDispatcher
     ): ViewModel() {
 
     private val _viewStateCameras = MutableLiveData<SimpleState<List<CameraEntity>>>()
@@ -30,9 +31,10 @@ class MainViewModel @Inject constructor(
     private val _viewStateDoors = MutableLiveData<SimpleState<List<DoorEntity>>>()
     val viewStateDoors: LiveData<SimpleState<List<DoorEntity>>> get() = _viewStateDoors
 
-    fun getCamerasRemote() {
-        viewModelScope.launch(Dispatchers.IO) {
-            when (val response = repositoryCameras.getCameraRemote()) {
+
+    fun getCameras() {
+        viewModelScope.launch(dispatcherIO) {
+            when (val response = repositoryCameras.getCamera()) {
                 is NetworkResponse.Success -> {
                     val camerasEntities = response.data
                     Log.d("MY_LOG", camerasEntities[0].name)
@@ -46,9 +48,9 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getRoomsRemote() {
-        viewModelScope.launch(Dispatchers.IO) {
-            when (val response = repositoryDoor.getDoorRemote()) {
+    fun getRooms() {
+        viewModelScope.launch(dispatcherIO) {
+            when (val response = repositoryDoor.getDoor()) {
                 is NetworkResponse.Success -> {
                     val doorsEntities = response.data
                     _viewStateDoors.postValue(SimpleState.Success(doorsEntities))
