@@ -7,6 +7,6 @@ class InteractorCamerasImpl @Inject constructor (
     private val repository: CameraRepository
     ): InteractorCameras {
     override suspend fun getCameraEntity(): NetworkResponse<List<CameraEntity>> {
-        return repository.getCameraRemote()
+        return repository.getCamera()
     }
 }

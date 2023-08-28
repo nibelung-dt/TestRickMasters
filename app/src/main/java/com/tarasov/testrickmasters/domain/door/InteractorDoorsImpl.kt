@@ -7,6 +7,6 @@ class InteractorDoorsImpl @Inject constructor(
     private val repository: DoorRepository
 ): InteractorDoors {
     override suspend fun getDoorEntity(): NetworkResponse<List<DoorEntity>> {
-        return repository.getDoorRemote()
+        return repository.getDoor()
     }
 }

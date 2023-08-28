@@ -16,7 +16,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.tarasov.testrickmasters.data.database.DatabaseOperations
-import com.tarasov.testrickmasters.data.database.TestObject
 import com.tarasov.testrickmasters.domain.camera.CameraEntity
 import com.tarasov.testrickmasters.domain.door.DoorEntity
 import com.tarasov.testrickmasters.presentation.utils.SimpleState
@@ -43,25 +42,20 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        viewModel.getCamerasRemote()
-        viewModel.getRoomsRemote()
+        viewModel.getCameras()
+        viewModel.getRooms()
         camerasObserver()
         doorsObserver()
 
-        // проверка realm
-        viewModel.addTestObject( "Ivan")
-
-       // val db = DatabaseOperations(uiThreadRealm)
-       // uiThreadRealm
     }
 
-    private fun testObserver() {
-        val nameObserver = Observer<List<TestObject>> { state ->
-            Log.d("MY_LOG", "извлечение из БД")
-            Log.d("MY_LOG", state[0].name)
-        }
-        viewModel.allNotes.observe(this, nameObserver)
-    }
+//    private fun testObserver() {
+//        val nameObserver = Observer<List<TestObject>> { state ->
+//            Log.d("MY_LOG", "извлечение из БД")
+//            Log.d("MY_LOG", state[0].name)
+//        }
+//        viewModel.allNotes.observe(this, nameObserver)
+//    }
 
 
 
