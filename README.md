@@ -1,6 +1,7 @@
 # TestRickMasters
 
 Мой первый опыт использования Jetpack Compose.
+#
 Стэк: mvvm, clean architecture, котлин, корутины, dagger hilt, realm, jetpack compose, glide
 #
 #
