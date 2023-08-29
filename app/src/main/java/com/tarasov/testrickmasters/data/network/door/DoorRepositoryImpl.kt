@@ -22,7 +22,6 @@ class DoorRepositoryImpl @Inject constructor (
     override suspend fun getDoor(): NetworkResponse<List<DoorEntity>> {
         val cachedList = databaseOperations.getDoorsCache()
         if (cachedList.isEmpty()) {
-            Log.d("MY_LOG", "cached Doors = true")
             val response = requestMaker.getResponse(
                 funToExecute = { service.getDoors() },
                 mapResponse = { list -> list.data.map(requestMapper::map) }
@@ -34,7 +33,6 @@ class DoorRepositoryImpl @Inject constructor (
             }
             return response
         } else {
-            Log.d("MY_LOG", "cached Doors = false")
             return cacheToEntity(cachedList)
         }
     }

@@ -11,8 +11,6 @@ const val NOT_FOUND = 404
 sealed class ResponseCode() {
     abstract val code: Int
     abstract val titleResId: Int
-   // abstract val subtitleResId: Int
-   // abstract val dialogTitleResId: Int
 
 
     object Undefined : ResponseCode() {

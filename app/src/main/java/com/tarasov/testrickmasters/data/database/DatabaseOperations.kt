@@ -9,13 +9,10 @@ import io.realm.Realm
 import java.util.UUID
 import javax.inject.Inject
 
-// https://www.section.io/engineering-education/using-realm-database-in-android/
 
 class DatabaseOperations @Inject constructor () {
 
-    // можно так realm.executeTransactionAwait(Dispatchers.IO)
     fun addCamera(cameraInput: CameraEntity) {
-        //    val realm = Realm.getInstance(config)
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction { r: Realm ->
             val camera = r.createObject(CameraRealm::class.java, UUID.randomUUID().toString())
@@ -29,14 +26,10 @@ class DatabaseOperations @Inject constructor () {
         }
     }
 
-    // fun getCamerasCache(): MutableLiveData<List<Camera>> {
     fun getCamerasCache(): List<CameraRealm> {
-        // val realm = Realm.getInstance(config)
         val realm = Realm.getDefaultInstance()
-        //var list = listOf<Camera>()
         val notes = realm.where(CameraRealm::class.java).findAll()
-        val list = notes?.subList(0, notes.size)!!
-        return list
+        return notes?.subList(0, notes.size)!!
     }
 
     fun addDoor(doorInput: DoorEntity) {
@@ -55,7 +48,6 @@ class DatabaseOperations @Inject constructor () {
     fun getDoorsCache(): List<DoorRealm> {
         val realm = Realm.getDefaultInstance()
         val notes = realm.where(DoorRealm::class.java).findAll()
-        val list = notes?.subList(0, notes.size)!!
-        return list
+        return notes?.subList(0, notes.size)!!
     }
 }

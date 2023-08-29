@@ -2,10 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android' //version "2.47" //apply false
-   // id 'io.realm.kotlin' version '0.10.0'
-  //  id 'io.realm.kotlin.gradle-plugin' version '0.10.0'
-  //  id 'dagger.hilt.android.plugin' //version "2.47"
+    id 'com.google.dagger.hilt.android'
 }
 
 apply plugin: "realm-android"
@@ -37,11 +34,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -61,19 +53,9 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-// возможно, надо убрать
     kapt {
         correctErrorTypes = true
     }
-// добавил я
-//    buildscript {
-//        repositories {
-//            mavenCentral()
-//        }
-//        dependencies {
-//            classpath "io.realm:realm-gradle-plugin:10.11.1"
-//        }
-//    }
 }
 
 dependencies {
@@ -82,33 +64,18 @@ dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
 
-    // testing
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
-    debugImplementation 'androidx.compose.ui:ui-tooling'
-    debugImplementation 'androidx.compose.ui:ui-test-manifest'
-
     // compose
     def compose_version = "1.4.0"
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version" // 1.5.0
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
     implementation 'androidx.activity:activity-compose:1.7.2'
-   // implementation platform('androidx.compose:compose-bom:2023.08.00')
     implementation platform('androidx.compose:compose-bom:2022.10.00')
-    // compose-bom:2023.06.01
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-graphics:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation "androidx.compose.material3:material3:1.1.1"
 
     // glide
-   // implementation "com.github.bumptech.glide:compose:1.0.0-alpha.5"
     implementation "com.github.skydoves:landscapist-glide:2.2.8"
-    // coil
-   // implementation "io.coil-kt:coil-compose:2.4.0"
-  //  implementation "com.github.skydoves:landscapist-coil:2.8.0"
 
     // retrofit2
     def network_version = "2.9.0"
@@ -125,12 +92,18 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt"
     annotationProcessor "com.google.dagger:hilt-compiler:$hilt"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
-   // implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
 
     // Realm
     implementation 'io.realm:realm-gradle-plugin:10.11.1'
-//    implementation 'io.realm.kotlin:1.8.0'
-    // io.realm.kotlin:gradle-plugin:
+
+    // testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
 }
 
 realm {
