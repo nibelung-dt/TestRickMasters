@@ -1,12 +1,9 @@
 package com.tarasov.testrickmasters.data.database.model
 
-//import io.realm.gradle.Realm
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.Required
 import org.bson.types.ObjectId
-
-
 
 open class CameraRealm: RealmObject() {
     @PrimaryKey
@@ -20,19 +17,6 @@ open class CameraRealm: RealmObject() {
     var rec: Boolean = false
     var snapshot: String = ""
 }
-//
-//open class TestObject: RealmObject() {
-//    @PrimaryKey
-//    var id: String = ""
-//    @Required
-//    var name: String = ""
-//}
-
-/*
-@DrawableRes
-    var image: Int? = null // 5.
- */
-
 
 
 

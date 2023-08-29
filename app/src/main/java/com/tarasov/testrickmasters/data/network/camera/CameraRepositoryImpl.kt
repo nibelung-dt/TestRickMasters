@@ -14,7 +14,6 @@ import javax.inject.Inject
 class CameraRepositoryImpl @Inject constructor(
     private val service: ApiService,
     private val requestMaker: RequestMaker,
-   // private val errorCodeHandler: ResponseCodeMapper,
     private val requestMapper: MapperCameraDTO,
     private val mapperCameraRealm: MapperCameraRealm,
     private val databaseOperations: DatabaseOperations

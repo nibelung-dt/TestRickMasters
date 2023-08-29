@@ -1,5 +1,7 @@
 package com.tarasov.testrickmasters.di
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.tarasov.testrickmasters.data.network.ApiService
 import com.tarasov.testrickmasters.data.network.RetrofitNetwork
 import dagger.Module
