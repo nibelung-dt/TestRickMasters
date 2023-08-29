@@ -2,14 +2,11 @@ package com.tarasov.testrickmasters.data.network.door
 
 import android.util.Log
 import com.tarasov.testrickmasters.data.database.DatabaseOperations
-import com.tarasov.testrickmasters.data.database.mappers.MapperCameraRealm
 import com.tarasov.testrickmasters.data.database.mappers.MapperDoorRealm
-import com.tarasov.testrickmasters.data.database.model.CameraRealm
 import com.tarasov.testrickmasters.data.database.model.DoorRealm
 import com.tarasov.testrickmasters.data.network.ApiService
 import com.tarasov.testrickmasters.data.network.utils.NetworkResponse
 import com.tarasov.testrickmasters.data.network.utils.RequestMaker
-import com.tarasov.testrickmasters.domain.camera.CameraEntity
 import com.tarasov.testrickmasters.domain.door.DoorEntity
 import com.tarasov.testrickmasters.domain.door.DoorRepository
 import javax.inject.Inject
@@ -21,12 +18,6 @@ class DoorRepositoryImpl @Inject constructor (
     private val mapperDoorRealm: MapperDoorRealm,
     private val databaseOperations: DatabaseOperations
 ): DoorRepository {
-
-//    suspend fun test() {
-//        service.getDoors()
-//    }
-
-
 
     override suspend fun getDoor(): NetworkResponse<List<DoorEntity>> {
         val cachedList = databaseOperations.getDoorsCache()
